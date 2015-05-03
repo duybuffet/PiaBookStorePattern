@@ -46,6 +46,42 @@ public class BookDAO {
         }
         return book;
     }
+    
+    public ArrayList<Book> searchBook(Book book) throws SQLException {
+        ArrayList<Book> listBook = new ArrayList<>();
+        String query = ""
+                + "SELECT b.id, b.display_price, b.stock_qtt, b.published_date, b.description, b.image_url, t.id AS title_id, t.name AS title, c.id AS category_id, c.category_name AS category, a.id AS author_id, a.author_name AS author "
+                + "FROM tblbook b "
+                + "INNER JOIN tblcategory c ON (b.category_id = c.id) "
+                + "INNER JOIN tbltitle t ON (b.title_id = t.id) "
+                + "INNER JOIN tblauthor a ON (b.author_id = a.id) "
+                + "WHERE t.name LIKE '%" + book.getTitle().getName() + "%' "
+                + "AND a.author_name LIKE '%" + book.getAuthor().getAuthorName() + "%' "
+                + "AND c.category_name LIKE '%" + book.getCategory().getName() + "%'"
+        ;        
+        System.out.println(query);
+        ResultSet set = null;
+        PreparedStatement ps = null;
+        
+        ps = DbConnect.getConnection().prepareStatement(query);
+        set = ps.executeQuery();
+        while (set.next()) {
+            book = new Book(
+                    set.getInt("id"),
+                    set.getString("image_url"),
+                    set.getInt("stock_qtt"),
+                    set.getFloat("display_price"),
+                    set.getString("published_date"),
+                    set.getString("description"),
+                    new Title(set.getInt("title_id"), set.getString("title"), ""),
+                    new Category(set.getInt("category_id"),set.getString("category"), ""),
+                    new Author(set.getInt("author_id"), set.getString("author"), "", ""),
+                    null
+            );
+            listBook.add(book);
+        }
+        return listBook;
+    }
 
     public ArrayList<Book> getAllBook() throws SQLException {
         String query = "SELECT id, display_price, published_date, description, stock_qtt, image_url, title_id, category_id, author_id, publisher_id FROM tblbook";

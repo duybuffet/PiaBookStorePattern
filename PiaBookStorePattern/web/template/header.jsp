@@ -15,7 +15,7 @@
         <td><img alt="" src="images/logo.gif"><br></td>
         <td style="width:127px;">
             <table cellpadding="0" cellspacing="0" border="0">
-                <tr><td nowrap class="vam"><strong>Language:</strong> &nbsp;<br><br style="line-height:9px"><img src="images/f.gif" alt="" border="0"></td></tr>
+                <tr><td nowrap class="vam"><strong><a href="<%=request.getContextPath()%>/index.jsp?action=search">Searh Book</a></strong> &nbsp;<br><br style="line-height:9px"></td></tr>
             </table>
         </td>
         <td><img src="images/z.gif" alt="" border="0"></td>

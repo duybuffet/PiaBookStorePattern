@@ -67,6 +67,10 @@
                                 %>
                                 <jsp:include page="frontend/checkout.jsp" />
                                 <%
+                                        } else if (action.equalsIgnoreCase("search")) {
+                                %>
+                                <jsp:include page="frontend/search.jsp" />
+                                <%
                                         }
                                     } else {
                                 %>

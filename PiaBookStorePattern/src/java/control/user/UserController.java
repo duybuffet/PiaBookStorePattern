@@ -29,8 +29,9 @@ import entity.user.User;
 public class UserController extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * Processes requests for both HTTP
+     * <code>GET</code> and
+     * <code>POST</code> methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -46,8 +47,8 @@ public class UserController extends HttpServlet {
             String action = request.getParameter("action").trim();
             HttpSession session = request.getSession(true);
             UserDAO uDao = new UserDAO();
-            
-            
+
+
             switch (action) {
                 case "login":
                     String username = (String) request.getParameter("username");
@@ -92,11 +93,13 @@ public class UserController extends HttpServlet {
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
-        }    }
+        }
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP <code>GET</code> method.
+     * Handles the HTTP
+     * <code>GET</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -110,7 +113,8 @@ public class UserController extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
+     * Handles the HTTP
+     * <code>POST</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -132,5 +136,4 @@ public class UserController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

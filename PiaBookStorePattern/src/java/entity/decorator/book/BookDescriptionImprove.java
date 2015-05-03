@@ -9,7 +9,6 @@ import entity.book.Book;
 import entity.book.Category;
 import entity.book.Publisher;
 import entity.book.Title;
-import entity.book.Translator;
 
 /**
  *
@@ -65,11 +64,6 @@ public class BookDescriptionImprove extends BookDecorator {
     @Override
     public Author getAuthor() {
         return book.getAuthor(); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Translator getTranslator() {
-        return book.getTranslator(); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
